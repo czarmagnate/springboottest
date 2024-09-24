@@ -1,6 +1,7 @@
 package com.example.springboot.controller;
 
 import com.example.springboot.entity.Book;
+import com.example.springboot.entity.BookDTO;
 import com.example.springboot.service.BookService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;

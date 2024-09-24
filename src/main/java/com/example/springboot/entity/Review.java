@@ -1,5 +1,6 @@
 package com.example.springboot.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -25,6 +26,7 @@ public class Review {
     @ManyToOne // 관계설정
     // JPA -> Book book 은 테이블의 컬럼이 아닌 FK로 설정
     @JoinColumn(name="book_id", referencedColumnName = "id", nullable = false)
+    //@JsonIgnore
     private Book book;  // book_PK(id)
 
 }

@@ -15,8 +15,9 @@ spring:
       hibernate:
         format_sql: 'true'
     hibernate:
-      ddl-auto: update  # DTO => Table ?? ??  @Entity  >> ?? ????? create -> update ? ??
+      ddl-auto: update  # DTO => Table 자동 생성  @Entity  >> 생성 후 create -> update 로 변경
       naming:
         physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
     show-sql: 'true'
-    open-in-view: false # ??? true >> ?? ??
+    open-in-view: false # 기본값 true >> DB 세션 유지    >> N + 1 문제 발생 가능
+    # Open Session in View(OSIV)

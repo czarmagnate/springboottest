@@ -2,6 +2,7 @@ package com.example.springboot.controller;
 
 import com.example.springboot.entity.Book;
 import com.example.springboot.entity.BookDTO;
+import com.example.springboot.entity.BookPayloadDTO;
 import com.example.springboot.service.BookService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -27,8 +28,23 @@ public class BookRestController {
     }
 
     @PostMapping("/book")
-    public BookDTO register(@RequestBody BookDTO dto){
-
-        return null;
+    public BookDTO register(@RequestBody BookPayloadDTO dto){
+        Book book = new Book();
+        BookDTO view = new BookDTO();
+        try{
+            book.setTitle(dto.getTitle());
+            book.setPrice(dto.getPrice());
+            book.setAuthor(dto.getAuthor());
+            book.setPage(dto.getPage());
+            book = bookService.save(book); // 등록
+            // BookDTO(응답용) 사용
+            view.setTitle(book.getTitle());
+            view.setPrice(book.getPrice());
+            view.setAuthor(book.getAuthor());
+            view.setPage(book.getPage());
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return view;
     }
 }

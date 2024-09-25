@@ -61,4 +61,8 @@ public class BookService {
         return reviewDTO;
     }
 
+    public Book save(Book book){
+        return bookRepository.save(book);
+    }
+
 }
